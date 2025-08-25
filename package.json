@@ -1,0 +1,37 @@
+{
+  "name": "html-to-pdf-api",
+  "version": "1.0.0",
+  "description": "⚡ Serverless HTML to PDF API using puppeteer-core + chrome-aws-lambda, deployable on Vercel. (AI generated!)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "html",
+    "pdf",
+    "api",
+    "puppeteer",
+    "chrome-aws-lambda",
+    "serverless",
+    "vercel"
+  ],
+  "author": "Oyeniyi Isaac <isaacoyeniyi06@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isaac0yen/html-to-pdf-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isaac0yen/html-to-pdf-api/issues"
+  },
+  "homepage": "https://github.com/isaac0yen/html-to-pdf-api#readme",
+  "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^24.17.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
