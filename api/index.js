@@ -1,21 +1,16 @@
 const chromium = require("chrome-aws-lambda");
 const puppeteer = require("puppeteer-core");
 
-const apiDocumentation = {
-  description: "HTML to PDF Conversion API",
-  usage: {
-    method: "POST",
-    endpoint: "/api/generate-pdf",
-    required_body: { html: "<h1>Your HTML content</h1>" },
-    example: {
-      curl: `curl -X POST -H "Content-Type: application/json" -d '{"html":"<h1>Hello World</h1>"}' https://your-vercel-domain.vercel.app/api/generate-pdf`
-    }
-  }
-};
+const path = require("path");
+const fs = require("fs");
 
 module.exports = async function handler(req, res) {
   if (req.method === "GET") {
-    return res.status(200).json(apiDocumentation);
+    const htmlForm = fs.readFileSync(
+      path.resolve(__dirname, "../client/index.html"),
+      "utf8"
+    );
+    return res.status(200).send(htmlForm);
   }
 
   if (req.method !== "POST") {
