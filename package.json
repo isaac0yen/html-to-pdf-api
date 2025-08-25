@@ -27,8 +27,7 @@
   },
   "homepage": "https://github.com/isaac0yen/html-to-pdf-api#readme",
   "dependencies": {
-    "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^10.4.0"
+    "playwright-aws-lambda": "^0.10.0"
   },
   "engines": {
     "node": ">=16"
