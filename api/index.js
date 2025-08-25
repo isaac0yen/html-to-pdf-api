@@ -2,11 +2,7 @@
 const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer-core");
 
-// Force specific Node.js runtime for better compatibility
-if (process.env.VERCEL) {
-  chromium.setHeadlessMode = true;
-  chromium.setGraphicsMode = false;
-}
+// Optimized for serverless environments
 
 module.exports = async (req, res) => {
   let browser = null;
@@ -50,18 +46,10 @@ module.exports = async (req, res) => {
 
       // Launch browser with minimal configuration
       browser = await puppeteer.launch({
-        args: [
-          ...chromium.args,
-          "--no-sandbox",
-          "--disable-setuid-sandbox",
-          "--disable-dev-shm-usage",
-          "--disable-gpu",
-          "--disable-web-security",
-          "--disable-features=VizDisplayCompositor",
-        ],
-        defaultViewport: { width: 1280, height: 720 },
-        executablePath: await chromium.executablePath("/tmp"),
-        headless: "new",
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
         ignoreHTTPSErrors: true,
       });
 
