@@ -2,7 +2,6 @@
   "name": "html-to-pdf-api",
   "version": "1.0.0",
   "description": "⚡ Serverless HTML to PDF API using puppeteer-core + chrome-aws-lambda, deployable on Vercel. (AI generated!)",
-  "main": "index.js",
   "scripts": {
     "dev": "node index.js",
     "start": "node index.js",
