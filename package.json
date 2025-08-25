@@ -27,8 +27,7 @@
   },
   "homepage": "https://github.com/isaac0yen/html-to-pdf-api#readme",
   "dependencies": {
-    "@sparticuz/chromium": "^119.0.2",
-    "puppeteer-core": "^21.11.0"
+    "html-pdf-node": "^1.0.8"
   },
   "engines": {
     "node": ">=16"
