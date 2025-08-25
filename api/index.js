@@ -1,4 +1,4 @@
-const chromium = require("@sparticuz/chromium");
+const chromium = require("chrome-aws-lambda");
 const puppeteer = require("puppeteer-core");
 
 module.exports = async (req, res) => {
@@ -41,17 +41,9 @@ module.exports = async (req, res) => {
       }
 
       const browser = await puppeteer.launch({
-        args: [
-          ...chromium.args,
-          "--no-sandbox",
-          "--disable-setuid-sandbox",
-          "--disable-dev-shm-usage",
-          "--disable-gpu",
-          "--single-process",
-          "--no-zygote"
-        ],
+        args: chromium.args,
         defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath(),
+        executablePath: await chromium.executablePath,
         headless: chromium.headless,
         ignoreHTTPSErrors: true,
       });
