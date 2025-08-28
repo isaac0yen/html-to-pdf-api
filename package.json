@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/isaac0yen/html-to-pdf-api#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "puppeteer": "^21.5.2",
-    "express-rate-limit": "^7.1.5",
-    "helmet": "^7.1.0",
+    "express": "5.1.0",
+    "puppeteer": "24.17.0",
+    "express-rate-limit": "8.0.1",
+    "helmet": "8.1.0",
     "cors": "^2.8.5"
   },
   "engines": {
