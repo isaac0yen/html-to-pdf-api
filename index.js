@@ -58,7 +58,8 @@ async function getBrowser() {
           '--disable-accelerated-2d-canvas',
           '--no-first-run',
           '--no-zygote',
-          '--disable-gpu'
+          '--disable-gpu',
+          '--font-render-hinting=none'
         ],
         defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(),
@@ -75,7 +76,8 @@ async function getBrowser() {
           '--disable-accelerated-2d-canvas',
           '--no-first-run',
           '--no-zygote',
-          '--disable-gpu'
+          '--disable-gpu',
+          '--font-render-hinting=none'
         ]
       });
     }
@@ -109,7 +111,7 @@ app.get('/', (req, res) => {
         }
         
         body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
           line-height: 1.6;
           color: #333;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -276,7 +278,10 @@ app.get('/', (req, res) => {
 <head>
   <title>Sample PDF</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', Arial, sans-serif; 
+      margin: 40px; 
+    }
     h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
     p { line-height: 1.6; margin-bottom: 15px; }
     .highlight { background-color: #f39c12; color: white; padding: 5px 10px; border-radius: 4px; }
@@ -285,12 +290,13 @@ app.get('/', (req, res) => {
 <body>
   <h1>Welcome to PDF Generation!</h1>
   <p>This is a <span class="highlight">sample HTML</span> that will be converted to PDF.</p>
-  <p>You can include any HTML content, CSS styles, and even images!</p>
+  <p>You can include any HTML content, CSS styles, images, and even emojis! 🎉✨</p>
   <ul>
     <li>✅ Full HTML support</li>
     <li>✅ CSS styling</li>
     <li>✅ Custom fonts</li>
     <li>✅ Images and graphics</li>
+    <li>😀 Emoji support</li>
   </ul>
 </body>
 </html></textarea>
@@ -368,6 +374,11 @@ app.post('/generate-pdf', pdfLimiter, async (req, res) => {
     await page.setContent(html, { 
       waitUntil: 'networkidle0',
       timeout: 30000 
+    });
+
+    // Ensure proper emoji and UTF-8 support
+    await page.evaluateOnNewDocument(() => {
+      document.charset = 'UTF-8';
     });
 
     // Generate PDF with options

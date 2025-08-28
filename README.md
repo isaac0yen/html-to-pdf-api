@@ -11,6 +11,7 @@ A standalone Node.js application that converts HTML content to PDF using Puppete
 - 📱 Responsive design
 - ⚡ RESTful API for programmatic access
 - 🎛️ Configurable PDF options (format, orientation, margins)
+- 😀 Full emoji support in generated PDFs
 
 ## Quick Start
 
