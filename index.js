@@ -357,7 +357,7 @@ app.post('/generate-pdf', pdfLimiter, async (req, res) => {
       html, 
       format = 'A4', 
       orientation = 'portrait',
-      margin = 20,
+      margin = 0,
       filename = 'document.pdf'
     } = req.body;
 
